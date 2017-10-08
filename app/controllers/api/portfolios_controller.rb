@@ -13,14 +13,12 @@ class Api::PortfoliosController < ApplicationController
   def create
     portfolio = Portfolio.new(portfolio_params)
     if portfolio.save
-      render json: {
-        status: 200,
+      render status: 200, json: {
         message: "Portfolio successfully created.",
         portfolio: portfolio
       }.to_json
     else
-      render json: {
-        status: 500,
+      render status: 500, json: {
         errors: portfolio.errors
       }.to_json
     end
@@ -29,14 +27,12 @@ class Api::PortfoliosController < ApplicationController
   def update
     portfolio = Portfolio.find(params[:id])
     if portfolio.update(portfolio_params)
-      render json: {
-        status: 200,
+      render status: 200, json: {
         message: "Portfolio successfully updated.",
         portfolio: portfolio
       }.to_json
     else
-      render json: {
-        status: 500,
+      render status: 422, json: {
         message: "Portfolio could not be updated.",
         portfolio: portfolio
       }.to_json
@@ -46,8 +42,7 @@ class Api::PortfoliosController < ApplicationController
   def destroy
     portfolio = Portfolio.find(params[:id])
     portfolio.destroy
-    render json: {
-      status: 200,
+    render status: 200, json: {
       message: "Portfolio successfully deleted."
     }.to_json
   end
