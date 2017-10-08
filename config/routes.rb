@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  # API endpoints
+  namespace :api do
+    resources :portfolios
+  end
+
   resources :portfolios
   get 'pages/home'
 
