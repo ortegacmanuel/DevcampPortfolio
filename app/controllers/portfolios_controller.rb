@@ -4,7 +4,7 @@ class PortfoliosController < ApplicationController
   end
 
   def new
-    @portfolios_item = Portfolio.new
+    @portfolio_item = Portfolio.new
   end
 
   def create
@@ -15,6 +15,22 @@ class PortfoliosController < ApplicationController
         format.html { redirect_to portfolios_path, notice: 'Portfolio item was successfully created.' }
       else
         format.html { render :new }
+      end
+    end
+  end
+
+  def edit
+    @portfolio_item = Portfolio.find(params[:id])
+  end
+
+  def update
+    @portfolio_item = Portfolio.find(params[:id])
+
+    respond_to do |format|
+      if @portfolio_item.update(portfolio_params)
+        format.html { redirect_to portfolios_path, notice: 'The portfolio item was successfully updated.' }
+      else
+        format.html { render :edit }
       end
     end
   end
