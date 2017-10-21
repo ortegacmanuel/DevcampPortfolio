@@ -1,8 +1,8 @@
 class PortfoliosController < ApplicationController
   layout 'portfolio'
-  
+
   def index
-    @portfolios_items = Portfolio.all
+    @portfolio_items = Portfolio.all
   end
 
   def angular
