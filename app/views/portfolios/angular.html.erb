@@ -1,12 +1,12 @@
 <h1>Portfolio items with subtitle: Angular</h1>
 
-<%= link_to "Cretate new item", new_portfolio_path %>
+<%= link_to "Cretate new item", new_portfolio_path if logged_in?(:site_admin) %>
 
 <% @angular_portfolios_items.each do |item| %>
   <p><%= link_to item.title, portfolio_show_path(item)  %></p>
   <p><%= item.subtitle %></p>
   <p><%= item.body %></p>
   <%= image_tag item.thumb_image unless item.thumb_image.nil? %>
-  <%= link_to "Edit", edit_portfolio_path(item) %>
-  <%= link_to "Detele portfolio item", item, method: :delete, data: { confirm: 'Are you sure?'} %>
+  <%= link_to "Edit", edit_portfolio_path(item) if logged_in?(:site_admin) %>
+  <%= link_to "Delete portfolio item", item, method: :delete, data: { confirm: 'Are you sure?'} if logged_in?(:site_admin) %>
 <% end %>
