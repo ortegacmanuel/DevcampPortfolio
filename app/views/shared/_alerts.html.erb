@@ -1,0 +1,7 @@
+<% if flash[:alert] %>
+  <%= js add_gritter(flash[:alert], title: "Rails WebApp") %>
+<% elsif flash[:error] %>
+  <%= js add_gritter(flash[:error], title: "Rails WebApp") %>
+<% elsif flash[:notice] %>
+  <%= js add_gritter(flash[:notice], title: "Rails WebApp") %>  
+<% end %>
