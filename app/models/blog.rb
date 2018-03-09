@@ -5,6 +5,8 @@ class Blog < ApplicationRecord
 
   validates_presence_of :title, :body
 
+  scope :recent, -> { order(created_at: :desc) }
+
   belongs_to :topic
   has_many :comments, dependent: :destroy
 end
